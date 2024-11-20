@@ -13,7 +13,7 @@ const jwt = require('jsonwebtoken');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const cors = require('cors');
-const userRouter = require('./routes/userRouter');
+const eventsRouter = require('./routes/eventsRouter');
 
 const app = express();
 app.use(cors());
@@ -104,14 +104,13 @@ passport.deserializeUser(async (id, done) => {
 
 
 app.post("/sign-up", async (req, res) => {
-  const { username, email, password } = req.body;
+  const {email, password } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await prisma.users.create({
       data: {
-        username,
         email,
         password: hashedPassword
       }
@@ -168,7 +167,7 @@ app.get("/", (req, res) => {
     res.send("Yo");
 });
 
-app.use('/user', userRouter);
+app.use('/events', eventsRouter);
 
 // _________________________________________________
 
