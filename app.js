@@ -147,7 +147,6 @@ app.post("/log-in", async (req, res, next) => {
         token,
         id: user.id,
         email: user.email,
-        username: user.username, // Add other necessary fields
       });
     });
   })(req, res, next);

@@ -6,8 +6,11 @@
    "country": "UAE", 
   "ticketPrice":  "50",
   "artist": "Coldplay",
-  "imgUrl": " "
+  "imgUrl": " ",
 }
+
+  "postedBy": "",
+  "isFree": false
 
 
 2025-01-09T00:00:00Z
@@ -15,3 +18,14 @@
 ISO 8601
 
 my_api_key_is_70c50a90b1n0.6651203107661632
+
+
+curl --location --request GET "http://localhost:3000/events" 
+
+
+
+
+Work on the Your api key.. Get // Change..
+extra: 
+add some sellingTickets services with @default(true)
+search by price or sth else
