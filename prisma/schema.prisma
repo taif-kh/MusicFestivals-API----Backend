@@ -26,7 +26,7 @@ model Users {
   id Int @id @default(autoincrement())
   email String @unique
   password String 
-  apiKey String?
+  apiKey String? @unique
 }
 
 model Events {
@@ -41,4 +41,5 @@ model Events {
   ticketPrice Float
   isFree      Boolean   @default(true)
   createdAt   DateTime  @default(now())
+  postedBy Int?
 }

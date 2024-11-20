@@ -14,6 +14,8 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const cors = require('cors');
 const eventsRouter = require('./routes/eventsRouter');
+const usersRouter = require('./routes/usersRouter');
+const keyRouter = require('./routes/keyRouter');
 
 const app = express();
 app.use(cors());
@@ -109,14 +111,14 @@ app.post("/sign-up", async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await prisma.users.create({
+    response = await prisma.users.create({
       data: {
         email,
         password: hashedPassword
       }
     });
 
-    res.redirect("/");
+    res.json(response);
   } catch (error) {
     console.error(error);
     res.status(500).send("An error occurred during sign-up.");
@@ -168,6 +170,9 @@ app.get("/", (req, res) => {
 });
 
 app.use('/events', eventsRouter);
+app.use('/users', usersRouter);
+app.use('/key', keyRouter);
+
 
 // _________________________________________________
 
