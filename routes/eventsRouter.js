@@ -68,9 +68,22 @@ eventsRouter.get('/:id', async (req, res) => {
 
 
 // Update one event
-eventsRouter.put('/', async (req, res) => {
+eventsRouter.put('/:api', async (req, res) => {
     const eventId = Number(req.body.id);
     const { name, description, date, city, country, artist, imgUrl, isFree } = req.body;
+    const apiKey = req.params.api;
+
+    let user = await prisma.users.findUnique({
+        where: {
+            apiKey,
+        },
+    });
+
+    if (!user)
+        {
+        return res.status(403).json({ error: "Unauthorized to perform this action." });
+    }
+
     response = await prisma.events.update({
         where: {
             id: eventId,
@@ -150,9 +163,22 @@ eventsRouter.get('/city/:city', async (req, res) => {
 
 //----SPECIFIC PUTs-----------------------------------------------------------
 // Update free
-eventsRouter.put('/isFree', async (req, res) => {
+eventsRouter.put('/isFree/:api', async (req, res) => {
     const eventId = Number(req.body.id);
     const { isFree } = req.body;
+    const apiKey = req.params.api;
+
+    let user = await prisma.users.findUnique({
+        where: {
+            apiKey,
+        },
+    });
+
+    if (!user)
+        {
+        return res.status(403).json({ error: "Unauthorized to perform this action." });
+    }
+
     response = await prisma.events.update({
         where: {
             id: eventId,
@@ -166,9 +192,22 @@ eventsRouter.put('/isFree', async (req, res) => {
 
 
 
-eventsRouter.put('/name', async (req, res) => {
+eventsRouter.put('/name/:api', async (req, res) => {
     const eventId = Number(req.body.id);
     const { name } = req.body;
+    const apiKey = req.params.api;
+
+    let user = await prisma.users.findUnique({
+        where: {
+            apiKey,
+        },
+    });
+
+    if (!user)
+        {
+        return res.status(403).json({ error: "Unauthorized to perform this action." });
+    }
+
     response = await prisma.events.update({
         where: {
             id: eventId,
@@ -181,9 +220,22 @@ eventsRouter.put('/name', async (req, res) => {
 });
 
 
-eventsRouter.put('/description', async (req, res) => {
+eventsRouter.put('/description/:api', async (req, res) => {
     const eventId = Number(req.body.id);
     const { description } = req.body;
+    const apiKey = req.params.api;
+
+    let user = await prisma.users.findUnique({
+        where: {
+            apiKey,
+        },
+    });
+
+    if (!user)
+        {
+        return res.status(403).json({ error: "Unauthorized to perform this action." });
+    }
+
     response = await prisma.events.update({
         where: {
             id: eventId,
@@ -197,9 +249,22 @@ eventsRouter.put('/description', async (req, res) => {
 
 
 
-eventsRouter.put('/date', async (req, res) => {
+eventsRouter.put('/date/:api', async (req, res) => {
     const eventId = Number(req.body.id);
     const { date } = req.body;
+    const apiKey = req.params.api;
+
+    let user = await prisma.users.findUnique({
+        where: {
+            apiKey,
+        },
+    });
+
+    if (!user)
+        {
+        return res.status(403).json({ error: "Unauthorized to perform this action." });
+    }
+
     response = await prisma.events.update({
         where: {
             id: eventId,
@@ -212,9 +277,22 @@ eventsRouter.put('/date', async (req, res) => {
 });
 
 
-eventsRouter.put('/artist', async (req, res) => {
+eventsRouter.put('/artist/:api', async (req, res) => {
     const eventId = Number(req.body.id);
     const { artist } = req.body;
+    const apiKey = req.params.api;
+
+    let user = await prisma.users.findUnique({
+        where: {
+            apiKey,
+        },
+    });
+
+    if (!user)
+        {
+        return res.status(403).json({ error: "Unauthorized to perform this action." });
+    }
+
     response = await prisma.events.update({
         where: {
             id: eventId,
@@ -228,9 +306,22 @@ eventsRouter.put('/artist', async (req, res) => {
 
 
 
-eventsRouter.put('/imgUrl', async (req, res) => {
+eventsRouter.put('/imgUrl/:api', async (req, res) => {
     const eventId = Number(req.body.id);
     const { imgUrl } = req.body;
+    const apiKey = req.params.api;
+
+    let user = await prisma.users.findUnique({
+        where: {
+            apiKey,
+        },
+    });
+
+    if (!user)
+        {
+        return res.status(403).json({ error: "Unauthorized to perform this action." });
+    }
+
     response = await prisma.events.update({
         where: {
             id: eventId,
@@ -244,9 +335,23 @@ eventsRouter.put('/imgUrl', async (req, res) => {
 
 
 
-eventsRouter.put('/ticketPrice', async (req, res) => {
+eventsRouter.put('/ticketPrice/:api', async (req, res) => {
     const eventId = Number(req.body.id);
     const { ticketPrice } = req.body;
+    const apiKey = req.params.api;
+
+    let user = await prisma.users.findUnique({
+        where: {
+            apiKey,
+        },
+    });
+
+    if (!user)
+        {
+        return res.status(403).json({ error: "Unauthorized to perform this action." });
+    }
+
+
     response = await prisma.events.update({
         where: {
             id: eventId,
