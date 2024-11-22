@@ -12,11 +12,11 @@ usersRouter.get('/', async (req, res) => {
 });
 
 usersRouter.get('/:id', async (req, res) => {
-    const userId = Number(req.params.user);
+    const userId = Number(req.params.id);
     response = await prisma.users.findUnique({
         where: {
             id: userId,
-        }
+        },
     });
     res.json(response);
 });

@@ -168,6 +168,8 @@ app.get("/", (req, res) => {
     res.send("Yo");
 });
 
+
+
 app.use('/events', eventsRouter);
 app.use('/users', usersRouter);
 app.use('/key', keyRouter);

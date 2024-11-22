@@ -25,7 +25,13 @@ curl --location --request GET "http://localhost:3000/events"
 
 
 
-Work on the Your api key.. Get // Change..
+Work on the Your api key.. Get // Change.. FRONT
 extra: 
 add some sellingTickets services with @default(true)
 search by price or sth else
+
+
+HOW TO SHOW DIVS GET/POST/DEL?
+
+
+from Item2, change pic + button (+text to copy)

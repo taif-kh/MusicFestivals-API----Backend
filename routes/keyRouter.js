@@ -21,12 +21,16 @@ keyRouter.post("/:id", async (req, res) => {
 
         let apiKey = "my_api_key_is_70c50a90b1n" + Math.random().toString();
 
-        let response = await prisma.users.update({
+        await prisma.users.update({
             where: { id: userId },
             data: { apiKey },
         });
 
-        return res.json({ message: "API key created successfully", data: response });
+        let response = await prisma.users.findUnique({
+            where: { id: userId },
+        });
+
+        return res.json(response);
     } catch (error) {
         console.error("Error generating API key:", error);
         res.status(500).json({ error: "An error occurred while generating the API key" });
