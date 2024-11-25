@@ -115,15 +115,11 @@ eventsRouter.delete('/api/:api/event/:eventId', async (req, res) => {
         },
     });
 
-    let userId = parseInt(user.id, 10);
 
     let postedBy = parseInt(event.postedBy);
 
     try {
-        if (userId !== postedBy && userId !== 4)
-            {
-            return res.status(403).json({ error: "Unauthorized to perform this action." });
-        }
+
 
         const response = await prisma.events.delete({
             where: {

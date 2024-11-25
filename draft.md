@@ -31,7 +31,5 @@ add some sellingTickets services with @default(true)
 search by price or sth else
 
 
-HOW TO SHOW DIVS GET/POST/DEL?
 
 
-from Item2, change pic + button (+text to copy)
